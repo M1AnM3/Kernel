@@ -25,7 +25,7 @@ for element in data:
             text.append(element['mapping'][key]['message']['content']['parts'][0])
 ##### Fin
 
-# Lista de oraciones o texto
+# Lista de oraciones o texto de ejemplo
 A = ['La oración de ejemplo', 'La mesa esta chueca', 'La sociedad esta rara', 'La palabra es muy corta', 'La palabra es muy larga', 'La vida tiene un origen bastante especial', 'La condena es condenar al condenado', 'La lematización de este ejemplo sera rara'] #['Esta es una oración, para un ejemplo', 'Aquí hay otra oración de ejemplo', 'Una tercera oración para el ejemplo', 'Una cuarta oración para el ejemplo', 'Una vaca come oraciones', 'Una', 'Las oraciones se ven como líneas']
 
 # Para no lematizar descomentar la siguiente línea
@@ -55,16 +55,16 @@ def max_of_G(G):
 # Información básica de la digráfica
 print(f'Palabras:{Aa}\nMaximo in-grado de la digráfica:{max_of_G(G)}\n Cantidad de palabras: {len(G.nodes)}\n Cantidad de oraciones: {len(A)}\n  Grado de entrada: {G.in_degree}\n Grado de salida: {G.out_degree}\n Grado: {G.degree}\n Diametro de la gráfica subyacente: {nx.diameter(G.to_undirected())}\n Excentricidad: {dict(nx.eccentricity(G.to_undirected()))}\n Centralidad de los vertices: {nx.degree_centrality(G)}')
 
-# Función para checar que un conjunto S tiene la propiedad de ser 2 absorbente 
+# Función para checar que un conjunto S tiene la propiedad de ser 2 absorbente, para que cambiar a 1 absorbente cambiar el 2 por 1
 def dist_2(G, S):
     for node in set(G.nodes) - S:
-        if all(nx.shortest_path_length(G, node, s) > 1 for s in S if nx.has_path(G, node, s)):
+        if all(nx.shortest_path_length(G, node, s) > 2 for s in S if nx.has_path(G, node, s)):
             return False
     return True
 
 # Función para encontrar conjunto independiente    
-def set_optimized(G):
-    quasi_kernel = set()
+def Independent_set(G):
+    ind = set()
     Nodes = set(G.nodes)
 
     while Nodes:
@@ -78,22 +78,22 @@ def set_optimized(G):
         for u in predecessors:
             Nodes -= set(G.predecessors(u))
 
-        if all(G.has_edge(v, u) == False for u in quasi_kernel):
-            quasi_kernel.add(v)
-        if not all(G.has_edge(u, v) == False for u in quasi_kernel):
-            quasi_kernel.remove(v)
+        if all(G.has_edge(v, u) == False for u in ind):
+            ind.add(v)
+        if not all(G.has_edge(u, v) == False for u in ind):
+            ind.remove(v)
     
     # Para ver el proceso de encontrar el conjunto independiente descomentar la siguiente línea
-    #print(f'Nodos: {Nodes}\nQuasi-kernel: {quasi_kernel}')
+    #print(f'Nodos: {Nodes}\nQuasi-kernel: {ind}')
 
-    return quasi_kernel
+    return ind
 
 # Función para checar que el conjunto dado por la función anterior satisface 
 # ser 2-absorbente
 def refine_set(G):
-    S = set_optimized(G)
+    S = Independent_set(G)
     while not dist_2(G, S):
-        S = set_optimized(G)
+        S = Independent_set(G)
     return S
 
 quasi_kernel_G = refine_set(G)
