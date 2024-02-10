@@ -31,16 +31,7 @@ for i in range(len(A)):
 # Información básica de la digráfica
 print(f'Palabras:{Aa}\n Cantidad de palabras: {len(G.nodes)}\n Cantidad de oraciones: {len(A)}\n  Grado de entrada: {G.in_degree}\n Grado de salida: {G.out_degree}\n Grado: {G.degree}\n Diametro de la gráfica subyacente: {nx.diameter(G.to_undirected())}\n Excentricidad: {dict(nx.eccentricity(G.to_undirected()))}\n Centralidad de los vertices: {nx.degree_centrality(G)}')
 
-# Función para encontrar los pozos de una digráfica
-
-def Pozos(G):
-    Pozos = set()
-    Nodes = set(G.nodes)
-    for v in Nodes:
-        if G.out_degree(v)==0:
-            Pozos.add(v)
-
-    return Pozos
+# Función para encontrar el núcleo de una digráfica
 
 def AcyclicKernel(G):
     D = G.copy()
