@@ -9,7 +9,7 @@ import spacy
 
 ##### Parte generada por Github-copilot
 # Load the JSON data
-with open("C:/Users/Miguel/Desktop/Manim/conversations.json") as file:
+with open("---") as file:
     data = json.load(file)
 
 # Initialize an empty list to store the text
