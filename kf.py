@@ -142,18 +142,18 @@ crs.connect("add", lambda sel: sel.annotation.set_text(f'{list(G.nodes)[sel.targ
 
 #nodes.set_array(np.array(node_colors))
 
-def update(sel):
-    node_idx = sel.target.index
-    node = list(G.nodes)[node_idx]
-    successors = list(G.successors(node))
+#def update(sel):
+#    node_idx = sel.target.index
+#    node = list(G.nodes)[node_idx]
+#    successors = list(G.successors(node))
 
-    color_map = {"black": 1, "green": 2, "blue": 3}
-    node_colors = [color_map["green"] if node in successors else color_map["blue"] for node in G.nodes]
-    nodes.set_array(np.array(node_colors))
+#    color_map = {"black": 1, "green": 2, "blue": 3}
+#    node_colors = [color_map["green"] if node in successors else color_map["blue"] for node in G.nodes]
+#    nodes.set_array(np.array(node_colors))
 
-    sel.annotation.set_text(f'{node} (in-degree: {G.in_degree(node)})')
-    plt.draw()
+#    sel.annotation.set_text(f'{node} (in-degree: {G.in_degree(node)})')
+#    plt.draw()
 
-crs.connect("add", update)
+#crs.connect("add", update)
 
 plt.show()
