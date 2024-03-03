@@ -28,14 +28,21 @@ for element in data:
 # Lista de oraciones o texto de ejemplo
 A = ['La oración de ejemplo', 'La mesa esta chueca', 'La sociedad esta rara', 'La palabra es muy corta', 'La palabra es muy larga', 'La vida tiene un origen bastante especial', 'La condena es condenar al condenado', 'La lematización de este ejemplo sera rara'] #['Esta es una oración, para un ejemplo', 'Aquí hay otra oración de ejemplo', 'Una tercera oración para el ejemplo', 'Una cuarta oración para el ejemplo', 'Una vaca come oraciones', 'Una', 'Las oraciones se ven como líneas']
 
+# Parte del codigo para extraer las palabras de un texto o textos
+##
 # Para no lematizar descomentar la siguiente línea
-Aa = [sentence.split(' ') for sentence in A]
+def split_sentence(sentence):
+    return [word.lower() for word in re.findall(r'\b\w+\b', sentence)]
+
+Aa = [split_sentence(A[i]) for i in range(len(A))]
 
 # Seleccionar modelo de spacy para lematizar
 #nlp = spacy.load('es_dep_news_trf') #spacy.load('en_core_web_sm') #spacy.load('es_dep_news_trf')
 
-# Lematización de las oraciones de la lista A, comentar linea 32 en este caso
+# Lematización de las oraciones de la lista A, comentar linea 34, 35 y 37 en este caso
 #Aa = [[token.lemma_ for token in nlp(text)] for text in A]
+
+##
 
 #Creación de la digráfica
 
