@@ -56,7 +56,7 @@ Que checa si existe una trayectoria dirigida de un nodo a un nodo del quasi núc
 
 Y este proceso si acaba pues es conocido que toda gráfica dirigida tiene quasi-núcleo pero:
 
-\textbf{OJO}: Como una gráfica dirigida no necesariamente tiene núcleo puede que si se pide la absorbencia en vez de la 2 absorbencia en el código, el while loop nunca acabe.
+OJO: Como una gráfica dirigida no necesariamente tiene núcleo puede que si se pide la absorbencia en vez de la 2 absorbencia en el código, el while loop nunca acabe.
 
 # Extracción del texto
 
