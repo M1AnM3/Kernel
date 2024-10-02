@@ -27,7 +27,6 @@ Entonces, el proceso para encontrar el quasí-núcleo (o núcleo) es ir agarrand
 
 La función en el codigo que se encarga de encontrar un conjunto independiente es 
 
-´´python
     def Independent_set(graph):
         mis = set()
         nodes = list(graph.nodes())
@@ -42,7 +41,6 @@ La función en el codigo que se encarga de encontrar un conjunto independiente e
             nodes = [n for n in nodes if not (n in graph[node] or node in graph[n])]
     
         return mis
-´´
 
 El cual empieza encontrando los nodos que son pozos (que no tienen flechas hacia alguien) y los agrega al conjunto "mis" pues por la condición de 2-absorbencia (y absorbencia) estos deben formar parte del núcleo necesariamente, luego de esto se selecciona un nodo al azar tal que no domina ni es dominado por un nodo en "mis", esto hasta que ya no haya nodos en la gráfica dirigida que satisfagan lo anterior.
 
@@ -62,3 +60,11 @@ OJO: Como una gráfica dirigida no necesariamente tiene núcleo puede que si se 
 
 # Extracción del texto
 
+La extracción del texto consiste en una función, que extrae las palabras de una lista de texto
+
+    def split_sentence(sentence):
+      return [word for word in re.findall(r'\b\w+\b', sentence)]
+    
+    Aa = [split_sentence(A[i]) for i in range(len(A))]
+
+Ya con esto se genera una digráfica de co-ocurrencia, donde los vértices son palabras y hay flechas de una palabra a otra si estas co-ocurren en un texto. Donde la palabra $x$ co-ocurre a la palabra $y$, si $x$ es la palabra anterior a $y$ en algun texto.
