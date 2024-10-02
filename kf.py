@@ -13,7 +13,7 @@ A = ['La oración de ejemplo', 'La mesa esta chueca', 'La sociedad esta rara', '
 ##
 # Para no lematizar descomentar la siguiente línea
 def split_sentence(sentence):
-    return [word.lower() for word in re.findall(r'\b\w+\b', sentence)]
+    return [word for word in re.findall(r'\b\w+\b', sentence)]
 
 Aa = [split_sentence(A[i]) for i in range(len(A))]
 
