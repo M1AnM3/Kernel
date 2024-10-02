@@ -2,28 +2,9 @@ import networkx as nx #Para generar la digráfica
 import matplotlib.pyplot as plt #Opcional. Para una representación de la digráfica
 import mplcursors 
 import itertools
-import json
 import numpy as np
 import random
 import spacy
-
-##### Parte generada por Github-copilot
-# Load the JSON data
-with open("---") as file:
-    data = json.load(file)
-
-# Initialize an empty list to store the text
-text = []
-
-# Iterate over all elements in the data
-for element in data:
-    # Iterate over the messages in the element
-    for key in element['mapping']:
-        # Check if the message field is not None
-        if element['mapping'][key]['message'] is not None:
-            # Extract the text from the message and add it to the list
-            text.append(element['mapping'][key]['message']['content']['parts'][0])
-##### Fin
 
 # Lista de oraciones o texto de ejemplo
 A = ['La oración de ejemplo', 'La mesa esta chueca', 'La sociedad esta rara', 'La palabra es muy corta', 'La palabra es muy larga', 'La vida tiene un origen bastante especial', 'La condena es condenar al condenado', 'La lematización de este ejemplo sera rara'] #['Esta es una oración, para un ejemplo', 'Aquí hay otra oración de ejemplo', 'Una tercera oración para el ejemplo', 'Una cuarta oración para el ejemplo', 'Una vaca come oraciones', 'Una', 'Las oraciones se ven como líneas']
